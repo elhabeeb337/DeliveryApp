@@ -6,12 +6,13 @@ double feeCalc(
     double cartValue, double distance, int itemsNum, DateTime transactionTime) {
   double totalDeliveryFee = 0.0;
   const double kMaxDeliveryFee = 15;
+  const int kCartValueWithoutDeliveryCost = 100;
   //First senario (no cart value or item to deliver)
   if (cartValue == 0.0 && itemsNum == 0.0) {
     return totalDeliveryFee;
   }
   //Second senario (with cartValue < 100)
-  if (cartValue < 100) {
+  if (cartValue < kCartValueWithoutDeliveryCost) {
     totalDeliveryFee = surchargeCartValue(cartValue) +
         distanceFee(distance) +
         surchargeOnItemsNum(itemsNum);
@@ -48,12 +49,13 @@ double feeCalc(
   }
 
   //Adding Surcharge when itemNum > 4
-  double surchargeOnItemsNum(int itemsNum) {
+     double surchargeOnItemsNum(int itemsNum) {
     double itemSurcharge = 0.0;
     const double kItemsurcharge = 0.50;
-
-    if (itemsNum > 4) {
-      itemSurcharge = ((itemsNum - 4) * kItemsurcharge);
+    const int kMaxNumberOfItemsWithNoSurcharge = 4;
+         
+    if (itemsNum > kMaxNumberOfItemsWithNoSurcharge{
+      itemSurcharge = ((itemsNum - kMaxNumberOfItemsWithNoSurcharge) * kItemsurcharge);
    }
     return itemSurcharge;
   }
