@@ -54,9 +54,7 @@ double feeCalc(
 
     if (itemsNum > 4) {
       itemSurcharge = ((itemsNum - 4) * kItemsurcharge);
-
-      return itemSurcharge;
-    }
+   }
     return itemSurcharge;
   }
 
