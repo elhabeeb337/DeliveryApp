@@ -17,14 +17,15 @@ double feeCalc(
         distanceFee(distance) +
         surchargeOnItemsNum(itemsNum);
 
-    //Third senario (Friday rush hour)
+  //Third senario (Friday rush hour)
+    const double cartValueSurcharge = 1.1;
     bool rushHr = isRushHr(transactionTime);
     if (rushHr) {
-      totalDeliveryFee = totalDeliveryFee * 1.1;
+      totalDeliveryFee = totalDeliveryFee * cartValueSurcharge;
     }
   }
   return min(totalDeliveryFee, kMaxDeliveryFee);
-    }
+}
 
   //Adding surcharge when cartValue < 10
   double surchargeCartValue(double cartValue) {
