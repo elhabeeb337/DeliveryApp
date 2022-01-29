@@ -62,8 +62,8 @@ double feeCalc(
   }
 
 //Friday rush hour
-    const int rushHrLowerBound = 15,
-    const int rushHrUpperBound = 19,
+    const int rushHrLowerBound = 15;
+    const int rushHrUpperBound = 19;
   bool isRushHr(DateTime transactionTime) {
     bool isFridayRush = false;
 
