@@ -18,10 +18,10 @@ double feeCalc(
         surchargeOnItemsNum(itemsNum);
 
   //Third senario (Friday rush hour)
-    const double cartValueSurcharge = 1.1;
+    const double kcartValueSurcharge = 1.1;
     bool rushHr = isRushHr(transactionTime);
     if (rushHr) {
-      totalDeliveryFee = totalDeliveryFee * cartValueSurcharge;
+      totalDeliveryFee = totalDeliveryFee * kcartValueSurcharge;
     }
   }
   return min(totalDeliveryFee, kMaxDeliveryFee);
@@ -62,12 +62,14 @@ double feeCalc(
   }
 
 //Friday rush hour
+    const int rushHrLowerBound = 15,
+    const int rushHrUpperBound = 19,
   bool isRushHr(DateTime transactionTime) {
     bool isFridayRush = false;
 
     if ((transactionTime.weekday == DateTime.friday) &&
-        (15 <= transactionTime.hour) &&
-        (transactionTime.hour <= 19)) {
+        (rushHrLowerBound <= transactionTime.hour) &&
+        (transactionTime.hour <= rushHrUpperBound)) {
       isFridayRush = true;
     }
 
